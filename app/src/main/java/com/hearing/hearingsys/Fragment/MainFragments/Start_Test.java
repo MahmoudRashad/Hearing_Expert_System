@@ -74,21 +74,34 @@ public class Start_Test extends Fragment {
         Question question= new Question(getActivity(),
                 getString(R.string.check_P_title),
                 getString(R.string.check_P_msg),
-                getString(R.string.check_P_pos),
-                getString(R.string.check_P_neg)
+                getString(R.string.check_P_pos),//Old Patient
+                getString(R.string.check_P_neg)//new Patient
         );
         question.show_dialog(new Question.result() {
             @Override
             public void on_pos_btn() {
-                get_P_info();
+
+                //TODO load patient from database
+
+                callfragment(new Question_Fragment());
+
             }
 
             @Override
             public void on_neg_btn() {
-                get_P_info();
+                //TODO add new  patient
+
+                callfragment(new New_Patint());
+
+
             }
         });
     }
-
+    private void callfragment(Question_Fragment question_fragment) {
+        getActivity().getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.contentView, question_fragment).commit();
+    }
+    private void callfragment(New_Patint new_patint) {
+        getActivity().getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.contentView, new_patint).commit();
+    }
 
 }

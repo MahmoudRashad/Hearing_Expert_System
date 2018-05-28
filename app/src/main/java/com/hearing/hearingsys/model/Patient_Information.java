@@ -12,6 +12,7 @@ public class Patient_Information {
     String patient_name ;
     String patient_age ;
     String mender_doctor ;
+    String PHONE ;
 
 
     public static String getTablePatient() {
@@ -49,4 +50,11 @@ public class Patient_Information {
         this.mender_doctor = mender_doctor;
     }
 
+    public String getPHONE() {
+        return PHONE;
+    }
+
+    public void setPHONE(String PHONE) {
+        this.PHONE = PHONE;
+    }
 }

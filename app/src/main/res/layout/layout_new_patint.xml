@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/P_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:gravity="center"
+        android:textStyle="bold"
+
+        android:text="@string/new_patint_title"
+        android:textSize="28dp" />
+
+
+    <LinearLayout
+        android:id="@+id/form"
+    android:orientation="vertical"
+        android:layout_below="@+id/P_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/name_ly"
+        android:layout_width="match_parent"
+        android:layout_weight="100"
+        android:background="@drawable/border_bg"
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/Name_lable"
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_margin="10dp"
+            android:text="@string/Name_s"
+            android:textStyle="bold"
+            android:textSize="26dp"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/Name_ET"
+            android:layout_width="0dp"
+            android:layout_weight="70"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/Age_ly"
+        android:layout_width="match_parent"
+        android:layout_weight="100"
+        android:background="@drawable/border_bg"
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/Age_lable"
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_margin="10dp"
+            android:text="@string/Age_s"
+            android:textStyle="bold"
+            android:textSize="26dp"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/age_ET"
+            android:layout_width="0dp"
+            android:layout_weight="70"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/Phone_ly"
+        android:layout_width="match_parent"
+        android:layout_weight="100"
+        android:background="@drawable/border_bg"
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/Phone_lable"
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_margin="10dp"
+            android:text="@string/Phone_s"
+            android:textStyle="bold"
+            android:textSize="26dp"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/Phone_ET"
+            android:layout_width="0dp"
+            android:layout_weight="70"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+    <Button
+        android:id="@+id/add_new_patint_Btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/form"
+        android:textSize="28dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/border_bg"
+        android:text="@string/Add" />
+</RelativeLayout>

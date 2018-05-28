@@ -59,11 +59,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_PATIENT_NAME = "patient_name";
     public static final String COLUMN_PATIENT_AGE = "patient_age";
     public static final String COLUMN_MENDER_DOCTOR = "mender_doctor";
+    public static final String COLUMN_PHONE = "PHONE";
 
     // create table patient
     public String CREATE_Patient_TABLE = "CREATE TABLE " + TABLE_PATIENT + "("
             + COLUMN_PATIENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_PATIENT_NAME + " TEXT,"
-            + COLUMN_PATIENT_AGE + " INTEGER," + COLUMN_MENDER_DOCTOR + " TEXT" + ")";
+            + COLUMN_PATIENT_AGE + " INTEGER," + COLUMN_MENDER_DOCTOR + " TEXT,"  + COLUMN_PHONE + " TEXT" + ")";
 
     // drop table sql query
     public String DROP_PATIENT_TABLE = "DROP TABLE IF EXISTS " + TABLE_PATIENT;
@@ -99,7 +100,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_SIGNALS_ID = "signals_id";
     public static final String COLUMN_SIGNALS_TEXT = "signals_text";
     public static final String COLUMN_SIGNALS_TEST_ID = "signals_test_id";
-    public static final String COLUMN_SIGNALS_IMAGE_ID = "signals_test_id";
+    public static final String COLUMN_SIGNALS_IMAGE_ID = "signals_Image_id";
 
 
     // create table patient
