@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="2dp"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:weightSum="5"
+
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/P_name"
+            android:layout_marginRight="1dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="2dp"
+            android:maxLines="2"
+            android:scrollbars="horizontal"
+            android:text="@string/P_name"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/single_list__header_bg"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/P_age"
+            android:gravity="center"
+            android:maxLines="2"
+            android:scrollbars="horizontal"
+            android:layout_marginRight="1dp"
+            android:padding="2dp"
+            android:background="@drawable/single_list__header_bg"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/P_age"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/Noise_type"
+            android:layout_marginRight="1dp"
+            android:padding="2dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="2"
+            android:background="@drawable/single_list__header_bg"
+            android:scrollbars="horizontal"
+            android:text="@string/noise_type_str"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Test_Degree"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="1dp"
+            android:padding="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/single_list__header_bg"
+            android:gravity="center"
+            android:maxLines="2"
+            android:scrollbars="horizontal"
+            android:text="@string/test_degree_s"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:maxLines="2"
+            android:background="@drawable/single_list__header_bg"
+            android:scrollbars="horizontal"
+            android:id="@+id/Dr_name"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:text="@string/dr_name"
+            android:padding="2dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>

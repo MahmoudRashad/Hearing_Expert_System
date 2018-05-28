@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Hearing Expret System</string>
+    <string name="RegistText">No account yet? Create one</string>
+    <string name="NameError">Name fild is required</string>
+    <string name="Pass_Error">Password is required</string>
+    <string name="Conf_Pass_Error">Conf_Password Is Required</string>
+    <string name="Conf_Pass_Match_Error">Password Not Match</string>
+    <string name="LoginText">Already have account</string>
+    <string name="P_name">Name</string>
+    <string name="P_age">Age</string>
+    <string name="noise_type_str">Noise</string>
+    <string name="test_degree_s">Degree</string>
+    <string name="dr_name">Doctor</string>
+    <string name="scenario_Question_title">Test Mode </string>
+    <string name="scenario_Question_msg">Choose Your Test Mode !!</string>
+    <string name="scenario_Question_pos">Complate Test</string>
+    <string name="scenario_Question_neg">Custome Level</string>
+    <string name="check_P_title">Patient</string>
+    <string name="check_P_msg">Test for ?</string>
+    <string name="check_P_pos">Old Patient</string>
+    <string name="check_P_neg">New Patient</string>
+    <string name="Patient_His_Fragment_s">Patient History</string>
+    <string name="Test_Fragment_tx_s">Test</string>
+    <string name="IM_Ex_Fragment_tx_s">Import/Export</string>
+
+</resources>
