@@ -16,6 +16,8 @@ public class AppContext {
     public static Test Testd;
     public static Doctor Test;
     public static Qustion_model Curr_question ;
+    public static Patient_Information Patient_Information ;
+
 
 
     public static enum mode_Type{

@@ -8,18 +8,23 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.text.InputType;
+import android.widget.EditText;
 
 /**
  * Created by Ahmed on 5/26/2018.
  */
 
-public class Question  {
+public class MYDialg {
 
     String msg,title,negative_btn_text, positive_btn_text;
     private Dialog dialog;
     Activity activity;
 
-    public Question(Activity activity,String title, String msg, String negative_btn_text, String positive_btn_text) {
+    public MYDialg() {
+    }
+
+    public MYDialg(Activity activity, String title, String msg, String negative_btn_text, String positive_btn_text) {
         this.activity=activity;
         this.title=title;
         this.msg=msg;
@@ -57,6 +62,46 @@ public class Question  {
 
     }
 
+    public void get_text(final text_interface listener ){
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle("Title");
+
+// Set up the input
+        final EditText input = new EditText(activity);
+// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        builder.setView(input);
+
+// Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (listener!=null)
+                listener.on_text_enter(input.getText().toString());
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+
+
+
+
+    }
+
+
+
+   public interface text_interface{
+        void on_text_enter(String text);
+    }
    public interface result{
         void on_pos_btn();
         void on_neg_btn();

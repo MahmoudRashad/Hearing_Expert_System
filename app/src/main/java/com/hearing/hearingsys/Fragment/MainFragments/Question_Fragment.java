@@ -2,7 +2,9 @@ package com.hearing.hearingsys.Fragment.MainFragments;
 
 import android.Manifest;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -38,7 +40,8 @@ public class Question_Fragment extends Fragment {
     TextView question_TV;
     GridView images_GV;
 
-    SoundPool signal_sp,noise_sp ;
+    MediaPlayer signal_sp;
+    MediaPlayer noise_sp ;
     int signal_flag,noise_flag ;
 
 
@@ -86,7 +89,7 @@ public class Question_Fragment extends Fragment {
         ArrayList<Image>images= new ArrayList<>();
         for (int i =1 ; i<10 ; i++)
         {
-            Image image = new Image(""+i, "/Music/");
+            Image image = new Image(""+i, "/hearingsystem/level1/imgs/");
             images.add(image);
         }
         Curr_question.setChoices(images);
@@ -107,8 +110,7 @@ public class Question_Fragment extends Fragment {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signal_sp.autoPause();
-                noise_sp.autoPause();
+
                 noise_sp.release();
                 signal_sp.release();
 
@@ -152,23 +154,34 @@ public class Question_Fragment extends Fragment {
 
     private void init_sound_pool() {
 
+        signal_sp= new MediaPlayer();
+        noise_sp= new MediaPlayer();
 
-        signal_sp = new SoundPool(1, AudioManager.STREAM_MUSIC,1);
-        noise_sp = new SoundPool(1, AudioManager.STREAM_MUSIC,1);
-
-        signal_flag=signal_sp.load(Environment.getExternalStorageDirectory().getPath()+"/Music/maine.mp3",1);
-//        noise_flag=noise_sp.load(Environment.getExternalStorageDirectory().getPath()+"/Music/maine.mp3",1);
+        signal_sp = MediaPlayer.create(getActivity(), Uri.parse(Environment.getExternalStorageDirectory().getPath()+"/hearingsystem/level1/signal/1.mp3"));
+        noise_sp = MediaPlayer.create(getActivity(), Uri.parse(Environment.getExternalStorageDirectory().getPath()+"/hearingsystem/noise/Brown_Noise.mp3"));
 
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                //Do something after 100ms
-//                if (signal_flag==1&&noise_flag==1) {
-                    signal_sp.play(signal_flag, (float) 0.5, (float) 0.5, 1, 0, 1);
-//                    noise_sp.play(noise_flag, (float) 0.5, (float)0.5, 1, -1, 1);
-//                }
+
+                signal_sp.setVolume(0.6f,0.6f);
+
+                signal_sp.start();
+                signal_sp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        noise_sp.stop();
+                        signal_sp.stop();
+                    }
+                });
+
+                noise_sp.setVolume(0.3f,0.3f);
+                noise_sp.setLooping(true);
+                noise_sp.start();
+
+
             }
         }, 1000);
 
@@ -179,6 +192,21 @@ public class Question_Fragment extends Fragment {
 
 
 
+    }
+
+    @Override
+    public void onPause() {
+
+
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+
+        noise_sp.release();
+        signal_sp.release();
+        super.onStop();
     }
 
     @Override

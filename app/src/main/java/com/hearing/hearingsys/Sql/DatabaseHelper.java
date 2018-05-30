@@ -13,6 +13,7 @@ import android.util.Log;
 
 
 import com.hearing.hearingsys.model.Doctor;
+import com.hearing.hearingsys.model.Patient_Information;
 
 import org.json.JSONObject;
 
@@ -419,4 +420,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public static Patient_Information load_patint_by(String id) {
+        return null;
+    }
 }

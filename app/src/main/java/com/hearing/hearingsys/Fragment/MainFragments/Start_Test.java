@@ -10,8 +10,11 @@ import android.view.ViewGroup;
 
 
 import com.hearing.hearingsys.AppContext;
-import com.hearing.hearingsys.Dialogs.Question;
+import com.hearing.hearingsys.Dialogs.MYDialg;
 import com.hearing.hearingsys.R;
+import com.hearing.hearingsys.Sql.DatabaseHelper;
+
+import java.util.zip.Inflater;
 
 
 /**
@@ -49,13 +52,13 @@ public class Start_Test extends Fragment {
     }
 
     private void setconfig() {
-        Question question= new Question(getActivity(),
+        MYDialg question= new MYDialg(getActivity(),
                 getString(R.string.scenario_Question_title),
                 getString(R.string.scenario_Question_msg),
                 getString(R.string.scenario_Question_pos),
                 getString(R.string.scenario_Question_neg)
         );
-        question.show_dialog(new Question.result() {
+        question.show_dialog(new MYDialg.result() {
             @Override
             public void on_pos_btn() {
                 AppContext.Mode= AppContext.mode_Type.complete;
@@ -71,19 +74,41 @@ public class Start_Test extends Fragment {
     }
 
     public  void get_P_info(){
-        Question question= new Question(getActivity(),
+        //ask for patint
+        final MYDialg question= new MYDialg(getActivity(),
                 getString(R.string.check_P_title),
                 getString(R.string.check_P_msg),
                 getString(R.string.check_P_pos),//Old Patient
                 getString(R.string.check_P_neg)//new Patient
         );
-        question.show_dialog(new Question.result() {
+        question.show_dialog(new MYDialg.result() {
             @Override
             public void on_pos_btn() {
 
                 //TODO load patient from database
 
-                callfragment(new Question_Fragment());
+                question.get_text(new MYDialg.text_interface() {
+                    @Override
+                    public void on_text_enter(String text) {
+                        AppContext.Patient_Information= DatabaseHelper.load_patint_by (text);
+                        if ( AppContext.Mode== AppContext.mode_Type.complete)
+                        {
+                            load_level(1);
+                        }
+                        else {
+                            //get level id
+                            question.get_text(new MYDialg.text_interface() {
+                                @Override
+                                public void on_text_enter(String text) {
+                                    load_level(Integer.parseInt(text));
+
+                                }
+                            });
+                        }
+
+                    }
+                });
+
 
             }
 
@@ -97,6 +122,11 @@ public class Start_Test extends Fragment {
             }
         });
     }
+
+    private void load_level(int i) {
+        callfragment(new Question_Fragment());
+    }
+
     private void callfragment(Question_Fragment question_fragment) {
         getActivity().getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.contentView, question_fragment).commit();
     }
