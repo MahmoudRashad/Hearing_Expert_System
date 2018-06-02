@@ -9,7 +9,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
@@ -64,24 +66,49 @@ public class MYDialg {
 
     }
 
-    public void get_text(final text_interface listener ,String title){
+    public void get_text(final text_interface listener ,final String title){
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(title);
 
 // Set up the input
+        LinearLayout linearLayout = new LinearLayout(activity);
         final EditText input = new EditText(activity);
-// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
         input.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+//        LinearLayout butons = new LinearLayout(activity);
+//
+//        final Button OK = new Button(activity);
+//        final Button cancel = new Button(activity);
+//
+//        butons.setOrientation(LinearLayout.HORIZONTAL);
+//        butons.addView(OK);
+//        butons.addView(cancel);
+//
+//        linearLayout.addView(input);
+//        linearLayout.addView(input);
+
+
+
+// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+
         builder.setView(input);
+
 
 // Set up the buttons
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (listener!=null)
-                listener.on_text_enter(input.getText().toString());
+
+                if (input.getText().toString().length()<1)
+                {
+                    get_text(  listener , title);
+                    input.setError("Required");
+                }else {
+                    if (listener!=null)
+                        listener.on_text_enter(input.getText().toString());
+                }
 
             }
         });

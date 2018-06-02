@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:gravity="center"
@@ -34,6 +36,7 @@
             android:layout_marginHorizontal="10dp"
             android:horizontalSpacing="2dp"
             android:verticalSpacing="2dp"
+
             android:layout_weight="60"
             android:layout_height="0dp">
 

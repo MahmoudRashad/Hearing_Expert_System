@@ -111,7 +111,6 @@ public class Question_Fragment extends Fragment {
                 noise_sp.release();
                 signal_sp.release();
 
-
                 finish_test();
             }
         });
@@ -181,6 +180,7 @@ public class Question_Fragment extends Fragment {
         {
             question_TV.setText(Curr_question.getSignal().getSIGNALS_TEXT());
             Question_adopter question_adopter= new Question_adopter(getActivity(),Curr_question.getChoices());
+            images_GV.setVerticalScrollBarEnabled(false);
             images_GV.setAdapter(question_adopter);
             init_sound_pool();
 
@@ -207,9 +207,9 @@ public class Question_Fragment extends Fragment {
         noise_sp = MediaPlayer.
                 create(getActivity(),
                         Uri.parse(Environment.getExternalStorageDirectory().getPath()
-                                +"/hearingsystem/noise/Brown_Noise.mp3"));
+//                                +"/hearingsystem/noise/Brown_Noise.mp3"));
 
-//                AppContext.Curr_question.getNoise().getPath()));
+               +AppContext.Curr_question.getNoise().getPath()));
 
 
         final Handler handler = new Handler();

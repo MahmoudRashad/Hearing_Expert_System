@@ -233,14 +233,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (1, 1 , 1 ,'70%', 'cafa' );");
-        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (2, 1 , 1 ,'60%', 'cafa' );");
-        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (3, 1 , 1 ,'50%', 'cafa' );");
-        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (4, 1 , 1 ,'100%', 'cafa' );");
-        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (5, 2 , 1 ,'70%', 'cafa' );");
-        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (6, 3 , 1 ,'70%', 'cafa' );");
-        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (7, 4 , 1 ,'70%', 'cafa' );");
-        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (8, 4 , 1 ,'70%', 'cafa' );");
+        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (1, 1 , 1 ,'70%', 'Brown_Noise' );");
+        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (2, 1 , 1 ,'60%', 'Brown_Noise' );");
+        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (3, 1 , 1 ,'50%', 'Brown_Noise' );");
+        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (4, 1 , 1 ,'100%', 'Brown_Noise' );");
+        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (5, 2 , 1 ,'70%', 'Brown_Noise' );");
+        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (6, 3 , 1 ,'70%', 'Brown_Noise' );");
+        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (7, 4 , 1 ,'70%', 'Brown_Noise' );");
+        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (8, 4 , 1 ,'70%', 'Brown_Noise' );");
 
 
 

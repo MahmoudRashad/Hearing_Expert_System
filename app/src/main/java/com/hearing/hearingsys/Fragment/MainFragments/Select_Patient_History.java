@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,12 +50,12 @@ public class Select_Patient_History extends Fragment {
         view = inflater.inflate(R.layout.get_patient_history, container, false);
         init();
         Clicks();
-        callserver();
+        callserver("");
 
         return view;
     }
 
-    private void callserver() {
+    private void callserver(String name ) {
         ///todo get data from database
         patient_data.clear();
 
@@ -63,7 +65,7 @@ public class Select_Patient_History extends Fragment {
            String selecttests_of_pation  = "SELECT * FROM "+TABLE_PATIENT +" p, " +TABLE_TEST+
                    " t where p."+COLUMN_PATIENT_ID+" = t."+COLUMN_TEST_PATIENT_ID+" and " +
                    " p."+COLUMN_PATIENT_NAME+
-                   " LIKE  '%"+Patient_name.getText().toString().toLowerCase()+"%';";
+                   " LIKE  '%"+name+"%';";
            Cursor cursor= db.select(selecttests_of_pation);
 //            JSONObject a =data;
             if (cursor != null) {
@@ -110,14 +112,38 @@ public class Select_Patient_History extends Fragment {
         Search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Patient_name.getText().toString()==null){
-                    Toast.makeText(getActivity(), "Please Enter Patient Name", Toast.LENGTH_SHORT).show();
-                }else {
-                    callserver();
-                }
+              Searsh_fn( Patient_name.getText().toString().toLowerCase());
+            }
+        });
+        Patient_name.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                Searsh_fn( s.toString().toLowerCase());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
     }
+
+    private void Searsh_fn(String text) {
+        if (Patient_name.getText().toString()==null){
+            Patient_name.setError("Please Enter Patient Name");
+//            Toast.makeText(getActivity(), "Please Enter Patient Name", Toast.LENGTH_SHORT).show();
+        }else {
+            callserver(text);
+        }
+
+    }
+
 
     private void init() {
 
