@@ -63,7 +63,7 @@ public class Select_Patient_History extends Fragment {
            String selecttests_of_pation  = "SELECT * FROM "+TABLE_PATIENT +" p, " +TABLE_TEST+
                    " t where p."+COLUMN_PATIENT_ID+" = t."+COLUMN_TEST_PATIENT_ID+" and " +
                    " p."+COLUMN_PATIENT_NAME+
-                   " = '"+Patient_name.getText().toString().toLowerCase()+"';";
+                   " LIKE  '%"+Patient_name.getText().toString().toLowerCase()+"%';";
            Cursor cursor= db.select(selecttests_of_pation);
 //            JSONObject a =data;
             if (cursor != null) {

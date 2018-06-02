@@ -10,7 +10,7 @@
     <string name="P_name">Name</string>
     <string name="P_age">Age</string>
     <string name="noise_type_str">Noise</string>
-    <string name="test_degree_s">Degree</string>
+    <string name="test_degree_s">Score</string>
     <string name="dr_name">Doctor</string>
     <string name="scenario_Question_title">Test Mode </string>
     <string name="scenario_Question_msg">Choose Your Test Mode !!</string>
@@ -30,5 +30,7 @@
     <string name="Add">Add</string>
     <string name="replay">Replay</string>
     <string name="Close">Close</string>
+    <string name="patient_id">Enter Patient ID</string>
+    <string name="chooseLevel">Enter level Number</string>
 
 </resources>

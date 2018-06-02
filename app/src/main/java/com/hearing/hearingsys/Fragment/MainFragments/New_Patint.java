@@ -41,7 +41,9 @@ public class New_Patint  extends Fragment {
             @Override
             public void onClick(View v) {
                 if (Validation()){
-
+//insetr in data base
+                    //set id in appcontect
+                    // load level[level_id] : level_id from app context
                 }
             }
         });

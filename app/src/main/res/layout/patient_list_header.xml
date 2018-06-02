@@ -73,7 +73,7 @@
             android:scrollbars="horizontal"
             android:text="@string/test_degree_s"
             android:textColor="@color/colorWhite"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
         <TextView
             android:layout_width="0dp"

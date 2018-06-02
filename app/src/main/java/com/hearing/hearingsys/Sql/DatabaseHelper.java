@@ -14,6 +14,7 @@ import android.util.Log;
 
 import com.hearing.hearingsys.model.Doctor;
 import com.hearing.hearingsys.model.Patient_Information;
+import com.hearing.hearingsys.model.noise;
 
 import org.json.JSONObject;
 
@@ -63,7 +64,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_PHONE = "PHONE";
 
     // create table patient
-    public String CREATE_Patient_TABLE = "CREATE TABLE " + TABLE_PATIENT + "("
+    public String  CREATE_Patient_TABLE = "CREATE TABLE " + TABLE_PATIENT + "("
             + COLUMN_PATIENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_PATIENT_NAME + " TEXT,"
             + COLUMN_PATIENT_AGE + " INTEGER," + COLUMN_MENDER_DOCTOR + " TEXT,"  + COLUMN_PHONE + " TEXT" + ")";
 
@@ -106,7 +107,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // create table patient
     public String CREATE_SIGNALS_TABLE = "CREATE TABLE " + TABLE_SIGNALS + "("
-            + COLUMN_SIGNALS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_SIGNALS_TEXT + " TEXT," + COLUMN_SIGNALS_TEST_ID + " INTEGER" +COLUMN_SIGNALS_IMAGE_ID + " INTEGER" + ")";
+            + COLUMN_SIGNALS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            COLUMN_SIGNALS_TEXT + " TEXT," + COLUMN_SIGNALS_TEST_ID + " INTEGER ," +COLUMN_SIGNALS_IMAGE_ID + " INTEGER " + ");";
 
     // drop table sql query
     public String DROP_SIGNALS_TABLE = "DROP TABLE IF EXISTS " + TABLE_SIGNALS;
@@ -120,15 +122,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // patient Table Columns names
     public static final String COLUMN_IMAGES_ID = "images_id";
-    public static final String COLUMN_IMAGES_TEXT = "images_text";
+    public static final String COLUMN_IMAGES_PATH = "IMAGES_PATH";
+    public static final String COLUMN_IMAGES_TEST_ID = "IMAGES_TEST_ID";
+    public static final String COLUMN_IMAGES_QUESTION_ID = "IMAGES_QUESTION_ID";
 
 
     // create table patient
     public String CREATE_IMAGES_TABLE = "CREATE TABLE " + TABLE_IMAGES + "("
-            + COLUMN_IMAGES_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_IMAGES_TEXT + " TEXT" + ")";
+            + COLUMN_IMAGES_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_IMAGES_PATH + " TEXT,"
+            + COLUMN_IMAGES_TEST_ID + " INTEGER,"  + COLUMN_IMAGES_QUESTION_ID + " INTEGER" + ");";
 
     // drop table sql query
     public String DROP_IMAGES_TABLE = "DROP TABLE IF EXISTS " + TABLE_IMAGES;
+
+    // NOISE_TABLE
+    public static final String NOISE_TABLE = "NOISE_TABLE";
+
+    // patient Table Columns names
+    public static final String COLUMN_NOISE_ID = "NOISE_ID";
+    public static final String COLUMN_NOISE_NAME = "NOISE_NAME";
+    public static final String COLUMN_NOISE_TEST_ID = "NOISE_TEST_ID";
+
+
+
+    // create table patient
+    public String CREATE_NOISE_TABLE = "CREATE TABLE " + NOISE_TABLE + "("
+            + COLUMN_NOISE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_NOISE_NAME + " TEXT, "
+            + COLUMN_NOISE_TEST_ID + " INTEGER"  + ");";
+
+    // drop table sql query
+    public String DROP_NOISE_TABLE = "DROP TABLE IF EXISTS " + NOISE_TABLE;
 
 
 
@@ -167,6 +190,67 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TEST_TABLE);
         db.execSQL(CREATE_SIGNALS_TABLE);
         db.execSQL(CREATE_IMAGES_TABLE);
+        db.execSQL(CREATE_NOISE_TABLE);
+
+
+
+
+
+        db.execSQL("INSERT INTO " + NOISE_TABLE + " VALUES (1,'Brown_Noise',1);");
+        db.execSQL("INSERT INTO " + NOISE_TABLE + " VALUES (2,'Brown_Noise',2);");
+        db.execSQL("INSERT INTO " + NOISE_TABLE + " VALUES (3,'Brown_Noise',3);");
+
+
+
+
+
+        db.execSQL("INSERT INTO " + TABLE_SIGNALS + " VALUES (1, ' الولد يلعب بالكره ',1,1 );");
+        db.execSQL("INSERT INTO " + TABLE_SIGNALS + " VALUES (2, 'ارنب ياكل جزره',1,2 );");
+        db.execSQL("INSERT INTO " + TABLE_SIGNALS + " VALUES (3, 'البنت تسرح شعرها',1,3 );");
+        db.execSQL("INSERT INTO " + TABLE_SIGNALS + " VALUES (4, 'الفرخه باضت بيضه',1,4 );");
+        db.execSQL("INSERT INTO " + TABLE_SIGNALS + " VALUES (5, 'القطه تلعب بالكره',1,5 );");
+        db.execSQL("INSERT INTO " + TABLE_SIGNALS + " VALUES (6, 'الدب ياكل عسل',1,6 );");
+        db.execSQL("INSERT INTO " + TABLE_SIGNALS + " VALUES (7, 'الكلب يشرب مياه',1,7 );");
+        db.execSQL("INSERT INTO " + TABLE_SIGNALS + " VALUES (8, 'الزرافه رقبتها طويله',1,8 );");
+        db.execSQL("INSERT INTO " + TABLE_SIGNALS + " VALUES (9, 'الفيل حجمه كبير',1,9 );");
+        db.execSQL("INSERT INTO " + TABLE_SIGNALS + " VALUES (10, 'الفيل يلعب بالكره',1,10 );");
+
+
+
+
+
+        db.execSQL("INSERT INTO " + TABLE_IMAGES + " VALUES (1, 'path',1,1 );");
+        db.execSQL("INSERT INTO " + TABLE_IMAGES + " VALUES (2, 'path',1,2 );");
+        db.execSQL("INSERT INTO " + TABLE_IMAGES + " VALUES (3, 'path',1,3 );");
+        db.execSQL("INSERT INTO " + TABLE_IMAGES + " VALUES (4, 'path',1,4 );");
+        db.execSQL("INSERT INTO " + TABLE_IMAGES + " VALUES (5, 'path',1,5 );");
+        db.execSQL("INSERT INTO " + TABLE_IMAGES + " VALUES (6, 'path',1,6 );");
+        db.execSQL("INSERT INTO " + TABLE_IMAGES + " VALUES (7, 'path',1,7 );");
+        db.execSQL("INSERT INTO " + TABLE_IMAGES + " VALUES (8, 'path',1,8 );");
+        db.execSQL("INSERT INTO " + TABLE_IMAGES + " VALUES (9, 'path',1,9 );");
+        db.execSQL("INSERT INTO " + TABLE_IMAGES + " VALUES (10, 'path',1,10 );");
+
+
+
+
+        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (1, 1 , 1 ,'70%', 'cafa' );");
+        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (2, 1 , 1 ,'60%', 'cafa' );");
+        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (3, 1 , 1 ,'50%', 'cafa' );");
+        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (4, 1 , 1 ,'100%', 'cafa' );");
+        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (5, 2 , 1 ,'70%', 'cafa' );");
+        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (6, 3 , 1 ,'70%', 'cafa' );");
+        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (7, 4 , 1 ,'70%', 'cafa' );");
+        db.execSQL("INSERT INTO " + TABLE_TEST + " VALUES (8, 4 , 1 ,'70%', 'cafa' );");
+
+
+
+        db.execSQL("INSERT INTO " + TABLE_DOCTOR + " VALUES (1, 'reham', 'reham@app.com', '123' );");
+
+
+        db.execSQL("INSERT INTO " + TABLE_PATIENT + " VALUES (1, 'ali1', 6, '6ahmed','0253513676 ');");
+        db.execSQL("INSERT INTO " + TABLE_PATIENT + " VALUES (2, 'ahmed', 9, '8ahmed','01253513676' );");
+        db.execSQL("INSERT INTO " + TABLE_PATIENT + " VALUES (3, 'ali3', 4, '5ahmed','01553513676' );");
+        db.execSQL("INSERT INTO " + TABLE_PATIENT + " VALUES (4, 'mahmoud4', 9, '5ahmed','01253513676' );");
     }
 
 
@@ -179,6 +263,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(DROP_TEST_TABLE);
         db.execSQL(DROP_SIGNALS_TABLE);
         db.execSQL(DROP_IMAGES_TABLE);
+        db.execSQL(CREATE_NOISE_TABLE);
         // Create tables again
         onCreate(db);
 
@@ -382,24 +467,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             SQLiteDatabase database = this.getReadableDatabase();
 
-            JSONObject Patient1 = new JSONObject();
-
-            List<Object> list = new ArrayList<Object>();
+//            JSONObject Patient1 = new JSONObject();
+//
+//            List<Object> list = new ArrayList<Object>();
             Cursor cursor = database.rawQuery(queryString, null);
 
-            if (cursor != null) {
-                if (cursor.moveToFirst()) {
-                    do {
-                        ContentValues content = new ContentValues();
-                        String[] columnNames = cursor.getColumnNames();
-                        for (String columnName : columnNames) {
-                            content.put(columnName, cursor.getString(cursor
-                                    .getColumnIndex(columnName)));
-                        }
-                        list.add(content);
-                    } while (cursor.moveToNext());
-                }
-            }try {
+//            if (cursor != null) {
+//                if (cursor.moveToFirst()) {
+//                    do {
+//                        ContentValues content = new ContentValues();
+//                        String[] columnNames = cursor.getColumnNames();
+//                        for (String columnName : columnNames) {
+//                            content.put(columnName, cursor.getString(cursor
+//                                    .getColumnIndex(columnName)));
+//                        }
+//                        list.add(content);
+//                    } while (cursor.moveToNext());
+//                }
+//            }
+            try {
 //                cursor.close();
 
             }catch (Exception e){
@@ -407,7 +493,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 e.printStackTrace();
             }
             try {
-                database.close();
+//                database.close();
 
             }catch (Exception e)
             {
@@ -420,7 +506,73 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public static Patient_Information load_patint_by(String id) {
+    public  ArrayList<Patient_Information> load_patint_by(String id) {
+        String Quary ="select * from "+TABLE_PATIENT+" where "+ COLUMN_PATIENT_ID+" = '"+id+"';";
+        ArrayList<Patient_Information> list= new ArrayList<>();
+        Cursor cursor=select(Quary);
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    String[] columnNames = cursor.getColumnNames();
+                    Patient_Information tmp =new Patient_Information();
+                    for (String columnName : columnNames) {
+                        switch (columnName){
+                            case COLUMN_PATIENT_ID :
+                                tmp.setPatient_id(Integer.parseInt(cursor.getString(cursor.getColumnIndex(columnName))));
+                                break;
+                            case COLUMN_PATIENT_NAME:
+                                tmp.setPatient_name(cursor.getString(cursor.getColumnIndex(columnName)));
+                                break;
+                            case COLUMN_PATIENT_AGE:
+                                tmp.setPatient_age((cursor.getString(cursor.getColumnIndex(columnName))));
+                                break;
+                            case COLUMN_MENDER_DOCTOR:
+                                tmp.setMender_doctor((cursor.getString(cursor.getColumnIndex(columnName))));
+                                break;
+                            case COLUMN_PHONE:
+                                tmp.setPHONE((cursor.getString(cursor.getColumnIndex(columnName))));
+                                break;
+                        }
+                    }
+                    list.add(tmp);
+                } while (cursor.moveToNext());
+
+            }
+            return list;
+
+        }
+        return null;
+    }
+
+    public  ArrayList<noise> select_noise_by_level(int id) {
+        String Quary ="select * from "+NOISE_TABLE+" where "+ COLUMN_NOISE_TEST_ID +" = "+id+";";
+        ArrayList<noise> list= new ArrayList<>();
+        Cursor cursor=select(Quary);
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    String[] columnNames = cursor.getColumnNames();
+                    noise tmp =new noise();
+                    for (String columnName : columnNames) {
+                        switch (columnName){
+                            case COLUMN_NOISE_ID :
+                                tmp.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(columnName))));
+                                break;
+                            case COLUMN_NOISE_NAME :
+                                tmp.setName(cursor.getString(cursor.getColumnIndex(columnName)));
+                                break;
+                            case COLUMN_NOISE_TEST_ID :
+                                tmp.setTest_id(Integer.parseInt(cursor.getString(cursor.getColumnIndex(columnName))));
+
+                                break;
+
+                        }
+                    }
+                    list.add(tmp);
+                } while (cursor.moveToNext());
+            }
+            return list;
+        }
         return null;
     }
 }

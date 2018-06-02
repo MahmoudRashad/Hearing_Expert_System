@@ -1,4 +1,4 @@
-package com.example.ahmed.hearingexpretsystem.model;
+package com.hearing.hearingsys.model;
 
 /**
  * Created by Ahmed on 5/26/2018.

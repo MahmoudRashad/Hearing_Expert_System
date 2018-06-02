@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Created by Ahmed on 5/26/2018.
@@ -21,7 +22,8 @@ public class MYDialg {
     private Dialog dialog;
     Activity activity;
 
-    public MYDialg() {
+    public MYDialg( Activity activity) {
+        this.activity=activity;
     }
 
     public MYDialg(Activity activity, String title, String msg, String negative_btn_text, String positive_btn_text) {
@@ -62,16 +64,16 @@ public class MYDialg {
 
     }
 
-    public void get_text(final text_interface listener ){
+    public void get_text(final text_interface listener ,String title){
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle("Title");
+        builder.setTitle(title);
 
 // Set up the input
         final EditText input = new EditText(activity);
 // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER);
         builder.setView(input);
 
 // Set up the buttons
@@ -80,6 +82,37 @@ public class MYDialg {
             public void onClick(DialogInterface dialog, int which) {
                 if (listener!=null)
                 listener.on_text_enter(input.getText().toString());
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+
+
+
+
+    }
+
+    public void get_show_text(final text_interface listener ,String title){
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle(title);
+
+
+
+// Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (listener!=null)
+                listener.on_text_enter("ok ");
 
             }
         });
